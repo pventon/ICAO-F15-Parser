@@ -1762,8 +1762,8 @@ class F15ParserTest(unittest.TestCase):
         self.assertEqual(1, self.ers.get_number_of_errors())
         self.assertEqual("ATS route 'B9' cannot follow a Lat/Long point",
                          self.__get_error_text_at(0))
-        print("Test 01:\n" + self.ers.get_element_at(1).unit_test_only())
-        self.ers.print_ers()
+        # print("Test output for previously created ERS:\n" + self.ers.get_element_at(1).unit_test_only())
+        # self.ers.print_ers()
 
     def __get_error_text_at(self, idx):
         # print(self.ers.get_all_errors()[idx].get_error_text())
