@@ -7,10 +7,10 @@ class UtilsTest(unittest.TestCase):
 
     # Method Utils().is_degree_semantics()
     def test_is_degree_semantics_01(self):
-        self.assertEqual(True, Utils().is_degree_semantics(0, 90))
-        self.assertEqual(True, Utils().is_degree_semantics(89, 90))
-        self.assertEqual(True, Utils().is_degree_semantics(90, 90))
-        self.assertEqual(False, Utils().is_degree_semantics(91, 90))
+        self.assertEqual(True, Utils().is_degree_semantics("0", 90))
+        self.assertEqual(True, Utils().is_degree_semantics("89", 90))
+        self.assertEqual(True, Utils().is_degree_semantics("90", 90))
+        self.assertEqual(False, Utils().is_degree_semantics("91", 90))
 
     # Method Utils().is_degree_minute_semantics()
     # 2 Digit Latitude value

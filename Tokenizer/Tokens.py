@@ -35,12 +35,12 @@ class Tokens:
 
     # Returns the list of tokens
     def get_tokens(self):
-        # type: () -> Tokens
+        # type: () -> []
         return self.tokens
 
     # Retrieves a token at 'index', or returns 'None' if 'index' is out of range
     def get_token_at(self, index):
-        # type: (int) -> Tokens
+        # type: (int) -> Token | None
         if index < 0 or index >= len(self.tokens):
             return None
         return self.tokens[index]

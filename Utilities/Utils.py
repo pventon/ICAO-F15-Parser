@@ -76,7 +76,7 @@ class Utils:
     # returns:  Speed of sound at the altitude given by the input argument altitude_in_meters
     @staticmethod
     def mach_to_ms_speed(mach_number, altitude_si):
-        # type: (int, float) -> float
+        # type: (float, float) -> float
         # Mach number to the nearest hundredth of unit Mach, e.g. M082 = Mach 0.82
         if altitude_si == 0:
             # Use speed of sound at sea level
@@ -103,7 +103,7 @@ class Utils:
     # returns:      A list containing two items, index 0 the latitude, index 1 the longitude
     #               of the projected point calculated by this method.
     def get_bearing_distance_projected_point(self, latitude, longitude, bearing, distance):
-        # type: (int, int, int, int) -> []
+        # type: (float, float, float, float) -> []
         result = self.geode.Direct(latitude, longitude, bearing, distance)
         return [result['lat2'], result['lon2']]
 
@@ -119,6 +119,6 @@ class Utils:
     #               - Index 1 the azimuth from point 1 to point 2;
     #               - Index 2 the distance between point 1 and point 2;
     def get_bearing_distance_between_points(self, latitude_1, longitude_1, latitude_2, longitude_2):
-        # type: (int, int, int, int) -> []
+        # type: (float, float, float, float) -> []
         result = self.geode.Inverse(latitude_1, longitude_1, latitude_2, longitude_2)
         return [result['azi1'], result['s12']]

@@ -66,7 +66,7 @@ class ParseF15:
     #           caller can recover a complete list of all erroneous tokens by calling
     #           ExtractedRouteRecord.get_errors();
     def parse_f15(self, ers, tokens):
-        # type: (ExtractedRouteSequence, Tokens) -> None
+        # type: (ExtractedRouteSequence, Tokens) -> bool
         # Assign a tokens type and subtype; this identifies a token and is used
         # by the parser to ensure correct grammar and semantics.
         F15TokenSyntaxDefinition().assign_syntax_descriptions(tokens)
@@ -77,7 +77,7 @@ class ParseF15:
             ers.add_error("NULL", 0, 0, 0, 0, ErrorMessages.error_messages[41])
             # Add a dummy ADES
             ers.add_dummy_ades()
-            return
+            return False
         base_type = token.get_token_base_type()
         match base_type:
             case TokenBaseType.F15_SPEED_VFR:
@@ -97,7 +97,7 @@ class ParseF15:
         # Get the rules from the last but one ERS record and assign it to the ADES
         previous = ers.get_previous_to_last_element()
         if previous is None:
-            return
+            return ers.get_number_of_errors() == 0
         ades.set_flight_rules(previous.get_flight_rules())
 
         # Return True if no errors have been reported

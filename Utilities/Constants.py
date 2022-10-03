@@ -32,4 +32,3 @@ class Constants:
 
     # Conversion factor for Nautical Miles to Meters
     NM_TO_METERS = 1852
-

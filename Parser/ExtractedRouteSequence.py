@@ -25,7 +25,7 @@ class ExtractedRouteSequence:
 
     # Adds a dummy ADES record
     def add_dummy_ades(self):
-        # type: () -> ExtractedRouteSequence
+        # type: () -> ExtractedRouteRecord
         return self.add_dummy_adep_ades("ADES")
 
     # Add an error record
@@ -40,7 +40,7 @@ class ExtractedRouteSequence:
 
     # Appends a route element to this class instance
     def append_element(self, element):
-        # type: (ExtractedRouteSequence) -> ExtractedRouteRecord
+        # type: (ExtractedRouteRecord) -> ExtractedRouteRecord
         self.extracted_route_records.append(element)
         return self.get_last_element()
 

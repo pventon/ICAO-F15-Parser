@@ -42,7 +42,7 @@ class ExtractedRouteRecord:
     stay_time = 0
 
     # Target altitude to cruise to for a cruise climb element
-    altitude_cruise_to = 0
+    altitude_cruise_to = ""
 
     # Target altitude in SI units to cruise to for a cruise climb element
     altitude_cruise_to_si = 0
@@ -94,7 +94,7 @@ class ExtractedRouteRecord:
 
     # Gets a route elements target cruise climb altitude
     def get_altitude_cruise_to(self):
-        # type: () -> float
+        # type: () -> str
         return self.altitude_cruise_to
 
     # Gets a route elements target cruise climb altitude in SI units
@@ -195,7 +195,7 @@ class ExtractedRouteRecord:
 
     # Sets a route elements altitude
     def set_altitude_cruise_to(self, altitude_cruise_to):
-        # type: (float) -> None
+        # type: (str) -> None
         self.altitude_cruise_to = altitude_cruise_to
 
     # Sets a route elements altitude
@@ -282,7 +282,7 @@ class ExtractedRouteRecord:
     # Sets the stay time, input argument is a string in HHMM,
     # this method converts and stores this as minutes
     def set_stay_time(self, stay_time):
-        # type: (int) -> None
+        # type: (str) -> None
         self.stay_time = (int(stay_time[0:2]) * 60) + int(stay_time[2:])
 
     # Sets a route elements subtype

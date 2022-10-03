@@ -46,7 +46,7 @@ class Token:
 
     # Sets a tokens start index
     def set_token_start_index(self, token_start_index):
-        # type: (str) -> None
+        # type: (int) -> None
         self.token_start_index = token_start_index
 
     # Gets a tokens start index
@@ -56,7 +56,7 @@ class Token:
 
     # Sets a tokens end index
     def set_token_end_index(self, token_end_index):
-        # type: (str) -> None
+        # type: (int) -> None
         self.token_end_index = token_end_index
 
     # Gets a tokens end index

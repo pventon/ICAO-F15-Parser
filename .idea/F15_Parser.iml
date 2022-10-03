@@ -7,4 +7,10 @@
     <orderEntry type="jdk" jdkName="Python 3.10 (F15_Parser)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PackageRequirementsSettings">
+    <option name="requirementsPath" value="" />
+  </component>
+  <component name="ReSTService">
+    <option name="DOC_DIR" value="$MODULE_DIR$/Documentation" />
+  </component>
 </module>
