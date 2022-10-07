@@ -1,5 +1,6 @@
 # ICAO-Field-15-Parser
 This repository contains an ICAO Field 15 Parser implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
+<p>The project has been built using the pyCharm IDE.
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
 <p>ICAO Field 15 is a string containing an arbitrary number of tokens that together describe a route filed by a pilot describing the route to be flown. 
 Individual token syntax is described in ICAO DOC 4444; this parser implements these descriptions in order to identify tokens based on their syntax.
