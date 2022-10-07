@@ -1,7 +1,16 @@
-# ICAO-Field-15-Parser
-This repository contains an ICAO Field 15 Parser implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>switch</b> statements used in the source code.
-<p>The project has been built using the pyCharm IDE.
+<h1>ICAO Field 15 Parser</h1>
+<h2>General</h2>
+This repository contains an ICAO Field 15 Parser implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>match</b> statements used in the source code (switch statements in  other languages).
+<p>The project has been built using the PyCharm 2022.2.2 (Professional Edition) IDE.
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
+<h2>Future Projects</h2>
+<p>As of 4th October 2022 implementation is ongoing on a Python project for a complete ICAO message parser that will parse all ICAO ATS and OLDI messages in the ICAO format. The ICAO message parser should be uploaded within a few weeks, say end of October 2022. The list of supported message titles will be:
+<ul>
+<li>ICAO ATS -> ACH, ACP, AFP, APL, ARR, CDN, CHG, CNL, CPL, DEP, DLA, EST, FPL, FNM, MFS, RQP, RQS, SPL</li>
+<li>OLDI -> ABI, ACP, ACT, AMA, CDN, COD, CPL, INF, LAM, MAC, OCM, PAC, RAP, REJ, REV, RJC, ROC, RRV, SBY</li>
+</ul>
+<p>Eventually there will be a fully data driven ADEXP parser also; no work in progress at the moment. I have a complete Java implementation of this and need to translate it to Python. It will come, but this will take time. The upcoming ICAO message parser has already been implemented to recognise ADEXP messages and the stub is in place to call a dedicated ADEXP parser. The initial release will be for the ICAO format only.
+<h1>ICAO Field 15 Parser Technical Description</h1>
 <p>ICAO Field 15 is a string containing an arbitrary number of tokens that together describe a route filed by a pilot describing the route to be flown. 
 Individual token syntax is described in ICAO DOC 4444; this parser implements these descriptions in order to identify tokens based on their syntax.
 ICAO Field 15 can be treated as a simple language comprised of three basic token types:
@@ -10,8 +19,8 @@ ICAO Field 15 can be treated as a simple language comprised of three basic token
 <li><b>Connectors</b> - These can be AIP published <b>ATS routes</b>, <b>SID</b>, <b>STAR</b>, <b>DCT</b> and / or special connectors indicating non-IFR routing, (e.g. VFR sections);</li>
 <li><b>Modifiers</b> - These consist of <b>Speed</b> and <b>Level</b> tokens that have to be applied at a point where they are specified;</li>
 </ul>
-ICAO Field 15 grammar / semantics analysis consists of parsing the field for correct sequences of tokens that basically follow 'point -> connector -> point -> connector -> point -> connector... etc. 
-<p>The parser starts by tokenizing the string representing ICAO Field 15; whitespace is removed and all tokens placed into a list with two identifiers, one identifying a tokens base type (e.g. point, connector or modifier) and a subtype that identifies the subtype, (e.g. a Latitude longitude point). The token type and subtype are derived from a tokens syntax.
+ICAO Field 15 grammar / semantics analysis consists of parsing the field for correct token syntax and sequences of tokens that basically follow a 'point -> connector -> point -> connector -> point -> connector... etc. concept. 
+<p>The parser starts by tokenizing the string representing ICAO Field 15; whitespace is removed and all tokens placed into a list with two identifiers, one identifying a tokens base type (e.g. point, connector or modifier) and a subtype that identifies a token in more detail, (e.g. a Latitude longitude point). The token type and subtype are derived from a tokens syntax.
 <p>In addition, the zero based start and end index of a tokens location in the ICAO Field 15 string are stored; this can be used to highlight tokens in a GUI to identify erroneous tokens to users.
 Once the token list is established, a class instance representing an empty ERS is created and both the token list (input) and ERS (output) are passed as arguments to the parser.
 <p>The parser iterates through the tokens checking for correct semantics (and some limited syntax checking not picked up during tokenization) populating the ERS with an ERS record for each token processed.
@@ -22,7 +31,7 @@ SI altitudes are in meters and SI speed in meters / second. Flight rules are app
 <ul>
 <li><b>IFR / VFR</b> - Flight plan Field 15 descriptions can change the flight rules between IFR -> VFR and VFR -> IFR at any point along a route;</li>
 <li><b>OAT / GAT</b> - Flight plan Field 15 descriptions can change the flight rules between OAT -> GAT and GAT -> OAT at any point along a route;</li>
-<li><b>IFPSTOP / IFPSTART</b> - These are CFMU IFPS specials to 'stop' IFR handing / processing between these designators. They are included in this implementation for completeness and may not be seen outside the CFMU IFPS.</li>
+<li><b>IFPSTOP / IFPSTART</b> - These are CFMU IFPS specials to 'stop' IFR handling / processing between these designators. They are included in this implementation for completeness and may not be seen outside the CFMU IFPS.</li>
 </ul>
 Once parsing is complete and no errors exist, the ERS will contain a sequence of points connected by a connector of a given type with all speed and altitude data applied. The ERS is ready for 'full' population using AIP data after which ETO at points can be calculated if required.
 The first and last points are always the ADEP and ADES; these are 'dummy' placeholders that must ultimately be populated from ATS messages, typically an FPL message when initially creating a flight plan.
