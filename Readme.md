@@ -60,7 +60,7 @@ tokens = tokenize.get_tokens()
 </code></pre>
 <pre><code>
 # Instantiate an Extracted Route Record instance, the parser 'output' will be stored
-# in this class. Multi-threaded applications should also instaniate this class for each thread.
+# in this class. Multi-threaded applications should also instantiate this class for each thread.
 ers = ExtractedRouteSequence()
 </code></pre>
 <pre><code>
@@ -72,7 +72,7 @@ ers = ExtractedRouteSequence()
 # The erroneous tokens have their zero based start and end index describing
 # their location in field 15; the zero based indices can be
 # used to highlight erroneous tokens in a GUI.
-# The Parse15 class is stateless and therefore only has to be instaniated once
+# The Parse15 class is stateless and therefore only has to be instantiated once
 # for multi-threaded applications.
 num_errors = ParseF15().parse_f15(ers, tokens)
 </code></pre>

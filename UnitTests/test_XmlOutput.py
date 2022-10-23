@@ -36,6 +36,26 @@ class XmlOutputTest(unittest.TestCase):
         self.__parse_field_15("N0450F350 12N123W 13N023W")
         # print(self.ers.as_xml())
 
+    def test_as_xml_05(self):
+        # Derived rule, pure IFR
+        self.__parse_field_15("N0450F350 12N123W 13N023W PNT B9 ABC")
+        # print(self.ers.as_xml())
+
+    def test_as_xml_06(self):
+        # Derived rule, pure VFR
+        self.__parse_field_15("N0450VFR PURE VFR FLIGHT")
+        # print(self.ers.as_xml())
+
+    def test_as_xml_07(self):
+        # Derived rule, 'Y' rules
+        self.__parse_field_15("N0450F350 12N123W 13N023W PNT/N0200VFR THIS IS A Y RULES FLIGHT")
+        # print(self.ers.as_xml())
+
+    def test_as_xml_08(self):
+        # Derived rule, 'Z' rules
+        self.__parse_field_15("N0450VFR FREE TEXT IFR PNT/N0300F100 ABC")
+        # print(self.ers.as_xml())
+
     def __get_error_text_at(self, idx):
         # print(self.ers.get_all_errors()[idx].get_error_text())
         return self.ers.get_all_errors()[idx].get_error_text()

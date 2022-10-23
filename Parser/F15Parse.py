@@ -83,7 +83,8 @@ class ParseF15:
         token = tokens.get_first_token()
         if token is None:
             # Add a dummy error record and report an error
-            ers.add_error("NULL", 0, 0, 0, 0, ErrorMessages.error_messages[41])
+            ers.add_error("NULL", 0, 0, TokenBaseType.F15_UNKNOWN,
+                          TokenSubType.F15_SB_UNKNOWN, ErrorMessages.error_messages[41])
             # Add a dummy ADES
             ers.add_dummy_ades()
             return False
@@ -108,6 +109,20 @@ class ParseF15:
         if previous is None:
             return ers.get_number_of_errors() == 0
         ades.set_flight_rules(previous.get_flight_rules())
+
+        # Figure out the flight rules from the extracted route
+        if ers.get_first_element().get_flight_rules() == "VFR":
+            ers.set_derived_flight_rules("V")
+            for ers_record in ers.get_all_elements():
+                if ers_record.get_flight_rules() == "IFR":
+                    ers.set_derived_flight_rules("Z")
+                    break
+        else:
+            ers.set_derived_flight_rules("I")
+            for ers_record in ers.get_all_elements():
+                if ers_record.get_flight_rules() == "VFR":
+                    ers.set_derived_flight_rules("Y")
+                    break
 
         # Return True if no errors have been reported
         return ers.get_number_of_errors() == 0
