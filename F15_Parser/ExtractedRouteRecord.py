@@ -1,4 +1,4 @@
-from Parser.F15TokenSyntaxDescriptions import TokenSubType, TokenBaseType
+from F15_Parser.F15TokenSyntaxDescriptions import TokenBaseType, TokenSubType
 
 
 class ExtractedRouteRecord:

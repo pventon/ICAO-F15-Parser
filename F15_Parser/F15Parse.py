@@ -1,9 +1,9 @@
 import copy
 
-from Parser.ErrorMessageDefinitions import ErrorMessages
-from Parser.ExtractedRouteRecord import ExtractedRouteRecord
-from Parser.ExtractedRouteSequence import ExtractedRouteSequence
-from Parser.F15TokenSyntaxDescriptions import TokenBaseType, TokenSubType, F15TokenSyntaxDefinition
+from F15_Parser.ErrorMessageDefinitions import ErrorMessages
+from F15_Parser.ExtractedRouteRecord import ExtractedRouteRecord
+from F15_Parser.ExtractedRouteSequence import ExtractedRouteSequence
+from F15_Parser.F15TokenSyntaxDescriptions import TokenSubType, TokenBaseType, F15TokenSyntaxDefinition
 from Tokenizer.Tokens import Tokens
 from Tokenizer.Token import Token
 from Utilities.Utils import Utils

@@ -1,4 +1,4 @@
-from Parser.F15TokenSyntaxDescriptions import TokenBaseType, TokenSubType
+from F15_Parser.F15TokenSyntaxDescriptions import TokenBaseType, TokenSubType
 
 
 class Token:

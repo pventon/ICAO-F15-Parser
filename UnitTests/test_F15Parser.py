@@ -1,7 +1,7 @@
 import unittest
 
-from Parser.ExtractedRouteSequence import ExtractedRouteSequence
-from Parser.F15Parse import ParseF15
+from F15_Parser.ExtractedRouteSequence import ExtractedRouteSequence
+from F15_Parser.F15Parse import ParseF15
 from Tokenizer.Tokenize import Tokenize
 
 
