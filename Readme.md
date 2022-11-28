@@ -1,7 +1,9 @@
 <h1>ICAO Field 15 Parser</h1>
 <h2>General</h2>
-This repository contains an ICAO Field 15 Parser implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>match</b> statements used in the source code (switch statements in  other languages).
-<p>The project has been built using the PyCharm 2022.2.2 (Professional Edition) IDE.
+<p>This repository contains an ICAO Field 15 Parser implemented using Python version 3.10.7. A more recent version of Python must be used in order to support <b>match</b> statements used in the source code (switch statements in  other languages).
+</p>
+<p>The project has been built using the <a href="https://www.jetbrains.com/pycharm/">PyCharm 2022.2.2</a> (Professional Edition) IDE running on a <a href="https://www.linuxmint.com">Linux Mint</a> OS. Installing Python 3.x and the <a href="https://www.jetbrains.com/pycharm/">PyCharm IDE</a> was straightforward with everything working as expected. Please donate and support <a href="https://www.linuxmint.com">Linux Mint</a> if your able to do so, its a great OS!
+</p>
 <p>An acronym list is provided at the end of this readme for readers unfamiliar with ATC acronyms.
 <h2>Future Projects</h2>
 <p>As of 4th October 2022 implementation is ongoing on a Python project for a complete ICAO message parser that will parse all ICAO ATS and OLDI messages in the ICAO format. The ICAO message parser should be uploaded within a few weeks, say end of October 2022. The list of supported message titles will be:
